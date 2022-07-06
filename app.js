@@ -51,7 +51,9 @@ const app = Vue.createApp({
 })
 
 app.component('trello-card', {
-  template: ` <div class="card-action">
+  template: ` 
+  <div class="card">
+  <div class="card-action">
   <select class="card-action-select">
     <optgroup label="Move to:">
       <option>To Do</option>
