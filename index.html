@@ -13,6 +13,7 @@
     <h1 class="title">Trello</h1>
     <div class="board">
       
+<<<<<<< HEAD
       <trello-list v-for="list in lists" :list="list">
         <trello-card v-for="card in getCards(list)"
         :key="card.id"
@@ -21,6 +22,14 @@
         :initial-list="card.list" @update-text="updateText"
         @update-list="updatList"></trello-card>
         </trello-list>
+=======
+      <div class="list">
+        <div class="list-header">
+          <h2 class="list-title">To Do</h2>
+          <button class="list-button">+</button>
+        </div>
+    <trello-card></trello-card>
+>>>>>>> f483b542c92d56a91f40e5558c1ec3f886647d18
     
     </div>
   </main>

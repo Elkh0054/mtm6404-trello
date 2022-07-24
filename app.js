@@ -99,4 +99,21 @@ app.component
 </div>`
 })
 
+app.component('trello-card', {
+  template: ` 
+  <div class="card">
+  <div class="card-action">
+  <select class="card-action-select">
+    <optgroup label="Move to:">
+      <option>To Do</option>
+      <option>Doing</option>
+      <option>Done</option>
+    </optgroup>
+  </select>
+  <button class="card-action-button">&times;</button>
+</div>
+<textarea class="card-text"></textarea>
+</div>
+</div>`
+})
 const vm = app.mount('#app')
