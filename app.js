@@ -46,8 +46,57 @@ const app = Vue.createApp({
     deleteCard: function (id) {
       const card = this.cards.findIndex(card => card.id === id)
       this.cards.splice(card, 1)
+    },
+    updateText: function (id, text) {
+      const card = this.cards.find(card => card.id === id)
+      card.text = text
+    },
+    updateList: function (id, list) {
+      const card = this.cards.find(card => card.id === id)
+      card.list = list
     }
   }
+  }
+})
+ 
+app.component('trello-card', {
+  props: ['id', 'initialText', 'initialList'],
+  data: function () {
+    return {
+      text: this.initialText,
+      list: this.initialList
+    }
+  },
+
+  template: `
+  <div class="card">
+  <div class="card-action">
+    <select class="card-action-select" v-model="list"
+    @change="$emit('update-list, id, list)">
+      <optgroup label="Move to:">
+        <option>To Do</option>
+        <option>Doing</option>
+        <option>Done</option>
+      </optgroup>
+    </select>
+    <button class="card-action-button">&times;</button>
+  </div>
+  <textarea class="card-text" v-model="text"
+  @change="$emit('update-text', id, text)"></textarea>
+</div>`
+})
+
+app.component 
+('trello-list', {
+  props: ['list'],
+  template: `
+  <div class="list">
+  <div class="list-header">
+    <h2 class="list-title">{{list}}</h2>
+    <button class="list-button">+</button>
+  </div>
+<slot> </slot>  
+</div>`
 })
 
 const vm = app.mount('#app')
